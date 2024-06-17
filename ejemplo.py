@@ -25,6 +25,8 @@ class Proyecto:
             self.p = self.porcenta / len(self.tareas)
         else:
             self.p = 0
+    
+        
 
 class Tarea:
     def __init__(self, id, nombre, empresa_cliente, descripcion, fecha_inicio, fecha_vencimiento, estado, porcentaje):
@@ -185,29 +187,103 @@ class ListaEnlazada:
         self.longitud -= 1
         return valor
     
-def filtrar_tareas_por_rango(self, proyectos, fecha_inicio, fecha_fin):
-    tareas_filtradas = []
-    for proyecto in proyectos:
-        for tarea in proyecto.tareas:
-            if fecha_inicio <= tarea.fecha_inicio <= fecha_fin:
-                tareas_filtradas.append(tarea)
-    return tareas_filtradas
+
+
+class modificar:
+    def __init__(self):    
+        ruta_archivo = "./datos_prueba.json"
+        self.proyectox = cargar_datos_desde_json(ruta_archivo)
+        
+                
+    def filtrar_tareas_por_rango(self, fecha_inicio, fecha_fin):
+        tareas_filtradas = []
+        for proyecto in self.proyectox:
+            for tarea in proyecto.tareas:
+                if fecha_inicio <= tarea.fecha_inicio <= fecha_fin:
+                    tareas_filtradas.append(tarea)
+        return tareas_filtradas
+        
+    def filtrar_proyectos_por_rango(self, proyectos, fecha_inicio, fecha_fin):
+        proyectos_f = []
+        for proyecto in self.proyectox:
+            if fecha_inicio <= proyecto.fecha_inicio <= fecha_fin:
+                proyectos_f.append(proyecto)
+        return proyectos_f  
+
+    def filtrar_por_id(self):
+        id_proyecto = int(input("Ingrese el id del proyecto: "))
+        for proyecto in self.proyectox:
+            if proyecto.id == id_proyecto:
+                return proyecto
+            
+    def agregar_huevonadas(self):
+        id = int(input("Ingrese el id del proyecto: "))
+        nombre = input("Ingrese el nombre del proyecto: ")
+        descripcion = input("Ingrese la descripcion del proyecto: ")
+        fecha_inicio = datetime.strptime(input("Ingrese la fecha de inicio del proyecto: "), "%Y-%m-%d")
+        fecha_vencimiento = datetime.strptime(input("Ingrese la fecha de vencimiento del proyecto: "), "%Y-%m-%d")
+        estado = input("Ingrese el estado del proyecto: ")
+        empresa = input("Ingrese la empresa del proyecto: ")
+        gerente = input("Ingrese el gerente del proyecto: ")
+        equipo = input("Ingrese el equipo del proyecto: ")
+        proyecto = Proyecto(id, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, gerente, equipo)
+        
+        i = int(input("Cuantas tareas desea agregar: "))
+        while i !=0:
+            
+            idt = input("Ingrese el id de la tarea: ")
+            nombret = input("Ingrese el nombre de la tarea: ")
+            empresa_clientet = input("Ingrese la empresa del cliente: ")
+            descripciont = input("Ingrese la descripcion de la tarea: ")
+            fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
+            fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
+            estadot = input("Ingrese el estado de la tarea: ")
+            porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
+            tareita = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)
+            proyecto.agregar_tarea(tareita)
+            
+            j = int(input("Cuantas subtareas desea agregar: "))
+            
+            while j !=0:
+                
+                ids = input("Ingrese el id de la subtarea: ")
+                nombres = input("Ingrese el nombre de la subtarea: ")
+                descripcions = input("Ingrese la descripcion de la subtarea: ")
+                estados = input("Ingrese el estado de la subtarea: ")
+                subtareita = Subtarea(ids, nombres, descripcions, estados)
+                tareita.agregar_subtarea(subtareita)
+                j -= 1
+            
+            i -= 1
+            
+        self.proyectox.append(proyecto)
+        
     
-def filtrar_proyectos_por_rango(self, proyectos, fecha_inicio, fecha_fin):
-    proyectos_f = []
-    for proyecto in proyectos:
-        if fecha_inicio <= proyecto.fecha_inicio <= fecha_fin:
-            proyectos_f.append(proyecto)
-    return proyectos_f
+    def eliminando_huevonadas(self):
+        print("Proyectos: ")
+        for proyectos in self.proyectox:
+            print(proyectos.nombre)
+        eli = int(input("Cual Proyecto desea eliminar: "))
+        eli -= 1
+        self.proyectox.pop(eli)
+    
+    def mostrar_huevonadas(self):
+         for proyectos in self.proyectox:
+            print(proyectos.nombre)
+            for tarea in proyectos.tareas:
+                print(tarea.nombre)
+                for subtarea in tarea.subtareas:
+                    print(subtarea.nombre)
+                    
+    def Listoca(self):
+        self.listoca = ListaEnlazada()
+        for proyectos in self.proyectox:
+            self.listoca.agregar(proyectos)
+        
 
-listoca = ListaEnlazada()
-ruta_archivo = "./datos_prueba.json"
-proyectox = cargar_datos_desde_json(ruta_archivo)
-for proyectos in proyectox:
-    print(proyectos.nombre)
-    for tarea in proyectos.tareas:
-        print(tarea.nombre)
-
+proyecto = modificar()
+proyecto.agregar_huevonadas()
+proyecto.mostrar_huevonadas()
 """
 # Ejemplo de uso:
 
