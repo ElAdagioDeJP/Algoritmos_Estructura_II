@@ -228,34 +228,9 @@ class modificar:
         equipo = input("Ingrese el equipo del proyecto: ")
         proyecto = Proyecto(id, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, gerente, equipo)
         
-        i = int(input("Cuantas tareas desea agregar: "))
-        while i !=0:
-            
-            idt = input("Ingrese el id de la tarea: ")
-            nombret = input("Ingrese el nombre de la tarea: ")
-            empresa_clientet = input("Ingrese la empresa del cliente: ")
-            descripciont = input("Ingrese la descripcion de la tarea: ")
-            fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
-            fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
-            estadot = input("Ingrese el estado de la tarea: ")
-            porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
-            tareita = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)
-            proyecto.agregar_tarea(tareita)
-            
-            j = int(input("Cuantas subtareas desea agregar: "))
-            
-            while j !=0:
-                
-                ids = input("Ingrese el id de la subtarea: ")
-                nombres = input("Ingrese el nombre de la subtarea: ")
-                descripcions = input("Ingrese la descripcion de la subtarea: ")
-                estados = input("Ingrese el estado de la subtarea: ")
-                subtareita = Subtarea(ids, nombres, descripcions, estados)
-                tareita.agregar_subtarea(subtareita)
-                j -= 1
-            
-            i -= 1
-            
+        tareita= self.agregar_tareasx(proyecto)
+        
+        proyecto.agregar_tarea(tareita)    
         self.proyectox.append(proyecto)
         
     
@@ -274,12 +249,80 @@ class modificar:
                 print(tarea.nombre)
                 for subtarea in tarea.subtareas:
                     print(subtarea.nombre)
+
+    def agregar_tareasx(self, proyectoy):
+        listoca = ListaEnlazada()
+        for tarea in proyectoy.tareas:
+            listoca.agregar(tarea)
+        i = int(input("Cuantas tareas desea agregar: "))
+        a = input("Desea agregar las tareas en una posicion especifica? s/n: ")
+        if a =="n":
+            while i !=0:
+                idt = input("Ingrese el id de la tarea: ")
+                nombret = input("Ingrese el nombre de la tarea: ")
+                empresa_clientet = input("Ingrese la empresa del cliente: ")
+                descripciont = input("Ingrese la descripcion de la tarea: ")
+                fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
+                fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
+                estadot = input("Ingrese el estado de la tarea: ")
+                porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
+                tareita = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)
+                j = int(input("Cuantas subtareas desea agregar: "))
+                
+                while j !=0:
                     
-    def Listoca(self):
-        self.listoca = ListaEnlazada()
-        for proyectos in self.proyectox:
-            self.listoca.agregar(proyectos)
+                    ids = input("Ingrese el id de la subtarea: ")
+                    nombres = input("Ingrese el nombre de la subtarea: ")
+                    descripcions = input("Ingrese la descripcion de la subtarea: ")
+                    estados = input("Ingrese el estado de la subtarea: ")
+                    subtareita = Subtarea(ids, nombres, descripcions, estados)
+                    tareita.agregar_subtarea(subtareita)
+                    j -= 1
+                    
+                listoca.agregar(tareita)
+                i -= 1
+                for ele in listoca:
+                    print(ele , end = "")
+            return listoca
+        elif a == "s":
+            for ele in listoca:
+                print(ele , end = "")
+            posi = int(input("En que posición desea insertar la tarea? "))
+            posi -= 1
+            while i !=0:
+                idt = input("Ingrese el id de la tarea: ")
+                nombret = input("Ingrese el nombre de la tarea: ")
+                empresa_clientet = input("Ingrese la empresa del cliente: ")
+                descripciont = input("Ingrese la descripcion de la tarea: ")
+                fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
+                fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
+                estadot = input("Ingrese el estado de la tarea: ")
+                porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
+                tareita = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)
+                j = int(input("Cuantas subtareas desea agregar: "))
+                
+                while j !=0:
+                    
+                    ids = input("Ingrese el id de la subtarea: ")
+                    nombres = input("Ingrese el nombre de la subtarea: ")
+                    descripcions = input("Ingrese la descripcion de la subtarea: ")
+                    estados = input("Ingrese el estado de la subtarea: ")
+                    subtareita = Subtarea(ids, nombres, descripcions, estados)
+                    tareita.agregar_subtarea(subtareita)
+                    j -= 1
+                    
+                listoca.insertar(posi,tareita)
+                i -= 1
+                for ele in listoca:
+                    print(ele , end = "")
+            return listoca
+
         
+print("Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa \n"
+      +"Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa\n"+
+        "Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa\n"+
+        "Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa")
+
 
 proyecto = modificar()
 proyecto.agregar_huevonadas()
