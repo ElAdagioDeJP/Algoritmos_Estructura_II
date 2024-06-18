@@ -1,15 +1,16 @@
 {
-    "subtareas": [
-      {
-      "id": 1,
-      "nombre": "Subtarea 1",
-      "descripcion": "Descripción de la subtarea 1",
-      "estado": "Completada"
-      },
-      {
-      "id": 2,
-      "nombre": "Subtarea 2",
-      "descripcion": "Descripción de la subtarea 2",
-      "estado": "Pendiente"
-      }
-]}
+  "subtareas": [
+    {
+    "id": 1,
+    "nombre": "Subtarea 1",
+    "descripcion": "Descripción de la subtarea 1",
+    "estado": "Completada"
+    },
+    {
+    "id": 2,
+    "nombre": "Subtarea 2",
+    "descripcion": "Descripción de la subtarea 2",
+    "estado": "Pendiente"
+    }
+  ]
+}
