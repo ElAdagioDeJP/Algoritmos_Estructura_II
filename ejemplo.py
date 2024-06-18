@@ -206,9 +206,8 @@ class modificar:
         for x in tareas_filtradas:
             print(x.nombre)
             print(x.estado)
-               
-    def filtrar_tareas_por_fecha_rango(self):
         
+    def filtrar_tareas_por_fecha_rango(self):
         tareas_filtradas = []
         fecha_inicio = datetime.strptime(input("Fecha del inicio de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
         fecha_fin = datetime.strptime(input("Fecha del fin de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
@@ -334,7 +333,7 @@ class modificar:
             self.quicksort(l, pi - 1, nume)
             self.quicksort(pi + 1, r, nume)
     
-    def imprimir_todo(self):
+    def imprimir_todo_ordenado(self):
         proyectosx = self.opcion_quicksort(self.proyectox)
         for proyecto in proyectosx:
             print(proyecto.nombre)
@@ -463,8 +462,8 @@ class modificar:
 
 proyecto = modificar()
 #proyecto.agregar_huevonadas()
-#proyecto.imprimir_todo()
-filtrado = proyecto.filtrar_tareas_por_estado()
+proyecto.imprimir_todo_ordenado()
+
 
 
 """
