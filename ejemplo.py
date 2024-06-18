@@ -186,7 +186,48 @@ class ListaEnlazada:
         self.longitud -= 1
         return valor
     
+class Pila:
+    def __init__(self):
+        self.tope = None
+    
+    def esta_vacia(self):
+        return self.tope is None
+    
+    def agregar(self, valor):
+        nodo_nuevo = Nodo(valor)
+        nodo_nuevo.siguiente = self.tope
+        self.tope = nodo_nuevo
 
+    def __iter__(self):
+        actual = self.tope
+        while actual:
+            yield actual.valor
+            actual = actual.siguiente
+
+    def eliminar(self):
+        if self.esta_vacia():
+            return None
+        else:
+            valor_eliminado = self.tope.valor
+            self.tope = self.tope.siguiente
+            return valor_eliminado
+
+    def ver_tope(self):
+        if self.esta_vacia():
+            return None
+        else:
+            return self.tope.valor
+
+    def recorrer(self):
+        if self.esta_vacia():
+            print("La pila está vacía")
+        else:
+            self._recorrer_aux(self.tope)
+
+    def _recorrer_aux(self, nodo):
+        if nodo is not None:
+            print(nodo.valor.nombre)
+            self._recorrer_aux(nodo.siguiente)
 
 class modificar:
     def __init__(self):    
@@ -333,6 +374,25 @@ class modificar:
             self.quicksort(l, pi - 1, nume)
             self.quicksort(pi + 1, r, nume)
     
+    def opcion_quicksort2(self, proyectos):
+        self.quicksort2(0, len(proyectos) - 1, proyectos)
+        return proyectos
+    
+    def partition2(self, l, r, nume):
+        pivot, ptr = nume[r], l
+        for i in range(l, r):
+            if nume[i].fecha_vencimiento > pivot.fecha_vencimiento:
+                nume[i], nume[ptr] = nume[ptr], nume[i]
+                ptr += 1
+        nume[ptr], nume[r] = nume[r], nume[ptr]
+        return ptr
+
+    def quicksort2(self, l, r, nume):
+        if l < r:
+            pi = self.partition2(l, r, nume)
+            self.quicksort2(l, pi - 1, nume)
+            self.quicksort2(pi + 1, r, nume)
+    
     def imprimir_todo_ordenado(self):
         proyectosx = self.opcion_quicksort(self.proyectox)
         for proyecto in proyectosx:
@@ -456,13 +516,32 @@ class modificar:
                 for ele in listoca:
                     print(ele , end = "")
             return listoca
+    def pilas_tareas(self):
+        
+        pila = Pila()
+        pilal = []
+        for proyecto in self.proyectox:
 
+            for tarea in proyecto.tareas:
+                pilal.append(tarea)
+        
+        pila_ordenada = self.opcion_quicksort2(pilal)
+        
+        for x in pila_ordenada:
+            pila.agregar(x)
+        for y in pila:
+            print(y.nombre)
+            print(y.fecha_inicio)
+            print(y.fecha_vencimiento)
+        
+    
 
 
 
 proyecto = modificar()
 #proyecto.agregar_huevonadas()
 proyecto.imprimir_todo_ordenado()
+#proyecto.pilas_tareas()
 
 
 
@@ -483,3 +562,6 @@ autos.agregar(carro3)
 
 lista = list(autos)
 """
+
+
+
