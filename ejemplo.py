@@ -228,6 +228,54 @@ class Pila:
         if nodo is not None:
             print(nodo.valor.nombre)
             self._recorrer_aux(nodo.siguiente)
+class Cola:
+    
+    def __init__(self):
+        self.frente = None
+        self.fin = None
+    
+    def __iter__(self):
+        actual = self.frente
+        while actual:
+            yield actual.valor
+            actual = actual.siguiente
+
+    def esta_vacia(self):
+        return self.frente is None
+    
+    def agregar(self, valor):
+        nodo_nuevo = Nodo(valor)
+        if self.esta_vacia():
+            self.frente = nodo_nuevo
+        else:
+            self.fin.siguiente = nodo_nuevo
+        self.fin = nodo_nuevo
+    
+    def eliminar(self):
+        if self.esta_vacia():
+            return None
+        else:
+            valor_eliminado = self.frente.valor
+            self.frente = self.frente.siguiente
+            if self.frente is None:
+                self.fin = None
+            return valor_eliminado
+    
+    def ver_frente(self):
+        if self.esta_vacia():
+            return None
+        else:
+            return self.frente.valor
+    def recorrer(self):
+        if self.esta_vacia():
+            print("La cola está vacía")
+        else:
+            self._recorrer_aux(self.frente)
+    
+    def _recorrer_aux(self, nodo):
+        if nodo is not None:
+            print(nodo.valor)
+            self._recorrer_aux(nodo.siguiente)
 
 class modificar:
     def __init__(self):    
@@ -513,26 +561,62 @@ class modificar:
                     
                 listoca.insertar(posi,tareita)
                 i -= 1
-                for ele in listoca:
-                    print(ele , end = "")
+               
             return listoca
     def pilas_tareas(self):
         
-        pila = Pila()
+        
         pilal = []
         for proyecto in self.proyectox:
-
+            
             for tarea in proyecto.tareas:
                 pilal.append(tarea)
         
         pila_ordenada = self.opcion_quicksort2(pilal)
+        return pila_ordenada
+    def pilas_tareas2(self):
         
+        
+        pilal = []
+        for proyecto in self.proyectox:
+            
+            for tarea in proyecto.tareas:
+                pilal.append(tarea)
+        
+        pila_ordenada = self.opcion_quicksort(pilal)
+        return pila_ordenada
+    def ordenar_tareas_pila(self):  
+        pila_ordenada = self.pilas_tareas()  
+        pila = Pila()
         for x in pila_ordenada:
             pila.agregar(x)
         for y in pila:
-            print(y.nombre)
-            print(y.fecha_inicio)
-            print(y.fecha_vencimiento)
+            
+            print("\t",y.nombre)
+            print("\t",y.empresa_cliente)
+            print("\t",y.descripcion)
+            print("\t",y.fecha_inicio)
+            print("\t",y.fecha_vencimiento)
+            print("\t",y.estado)
+
+    def ordenar_tareas_colas(self):
+        pila_ordenada = self.pilas_tareas2()
+        cola = Cola()
+        for x in pila_ordenada:
+            cola.agregar(x)
+        cola.eliminar()
+        for y in cola:
+            print("\t",y.nombre)
+            print("\t",y.empresa_cliente)
+            print("\t",y.descripcion)
+            print("\t",y.fecha_inicio)
+            print("\t",y.fecha_vencimiento)
+            print("\t",y.estado)
+           
+            
+            
+            
+
         
     
 
@@ -540,8 +624,9 @@ class modificar:
 
 proyecto = modificar()
 #proyecto.agregar_huevonadas()
-proyecto.imprimir_todo_ordenado()
-#proyecto.pilas_tareas()
+#proyecto.imprimir_todo_ordenado()
+#proyecto.ordenar_tareas_pila()
+#proyecto.ordenar_tareas_colas()
 
 
 
