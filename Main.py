@@ -483,8 +483,14 @@ class modificar:
         id = int(input("Ingrese el id del proyecto: "))
         nombre = input("Ingrese el nombre del proyecto: ")
         descripcion = input("Ingrese la descripcion del proyecto: ")
-        fecha_inicio = datetime.strptime(input("Ingrese la fecha de inicio del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
-        fecha_vencimiento = datetime.strptime(input("Ingrese la fecha de vencimiento del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
+        while True:
+            try:
+                fecha_inicio = datetime.strptime(input("Ingrese la fecha de inicio del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
+                fecha_vencimiento = datetime.strptime(input("Ingrese la fecha de vencimiento del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
+                if fecha_inicio < fecha_vencimiento:
+                    break
+            except ValueError:
+                print("Fecha inválida, intente de nuevo")
         estado = input("Ingrese el estado del proyecto: ")
         empresa = input("Ingrese la empresa del proyecto: ")
         gerente = input("Ingrese el gerente del proyecto: ")
@@ -525,8 +531,14 @@ class modificar:
                 nombret = input("Ingrese el nombre de la tarea: ")
                 empresa_clientet = input("Ingrese la empresa del cliente: ")
                 descripciont = input("Ingrese la descripcion de la tarea: ")
-                fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
-                fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
+                while True:
+                    try:
+                        fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea (Año-Mes-Dia): "), "%Y-%m-%d")
+                        fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea (Año-Mes-Dia): "), "%Y-%m-%d")
+                        if fecha_iniciot < fecha_vencimientot:
+                            break
+                    except ValueError:
+                        print("Fecha inválida, intente de nuevo")
                 estadot = input("Ingrese el estado de la tarea: ")
                 porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
                 tareita = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)
@@ -557,8 +569,14 @@ class modificar:
                 nombret = input("Ingrese el nombre de la tarea: ")
                 empresa_clientet = input("Ingrese la empresa del cliente: ")
                 descripciont = input("Ingrese la descripcion de la tarea: ")
-                fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
-                fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
+                while True:
+                    try:
+                        fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
+                        fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
+                        if fecha_iniciot < fecha_vencimientot:
+                            break
+                    except ValueError:
+                        print("Fecha inválida, intente de nuevo")
                 estadot = input("Ingrese el estado de la tarea: ")
                 porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
                 tareita = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)

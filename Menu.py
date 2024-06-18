@@ -112,8 +112,29 @@ class Menu:
                     
             elif self.opcion == 7:
                 print("")
-                print("Tareas")
-                main.ordenar_tareas_colas()
+                print("Estas en el menu de Tareas\n")
+                print("¿Qué desea hacer?\n")
+                print("1. Agregar Tareas al final")
+                print("2. Agregar Tareas en una posición específica")
+                print("3. Modificar Tarea")
+                print("4. Eliminar Tarea")
+                print("5. Listar Tareas")
+                
+                opcion = int(input("Ingrese la opción deseada (1-5): "))
+                while True:
+                    try:
+                        if 1 <= opcion <= 5:
+                            break
+                        else:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input("Ingrese la opción deseada (1-5): "))
+                    except ValueError:
+                        print("Opción inválida, intente de nuevo")
+                        opcion = int(input("Ingrese la opción deseada (1-5): "))
+                        
+                
+                
+                
                 
                 
             elif self.opcion == 8:
