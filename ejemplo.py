@@ -12,13 +12,12 @@ class Proyecto:
         self.empresa = empresa
         self.gerente = gerente
         self.equipo = equipo
-        self.tareas = []
+        self.tareas = ListaEnlazada()
         self.porcenta = 0
         self.p = 0
 
     def agregar_tarea(self, tarea):
-        self.tareas.append(tarea)
-        self.porcenta += tarea.porcentaje
+        self.tareas.agregar(tarea)
         
     def calcular_p(self):
         if len(self.tareas) > 0:
@@ -193,29 +192,171 @@ class modificar:
     def __init__(self):    
         ruta_archivo = "./datos_prueba.json"
         self.proyectox = cargar_datos_desde_json(ruta_archivo)
+    
+    # MODULO 3    
+    #FILTRAR TAREAS   Inicio
         
-                
-    def filtrar_tareas_por_rango(self, fecha_inicio, fecha_fin):
+    def filtrar_tareas_por_estado(self):
         tareas_filtradas = []
+        estado_tarea = input("Ingrese el estado de la tarea: ")
+        for proyecto in self.proyectox:
+            for tarea in proyecto.tareas:
+                if estado_tarea == tarea.estado:
+                    tareas_filtradas.append(tarea)
+        for x in tareas_filtradas:
+            print(x.nombre)
+            print(x.estado)
+               
+    def filtrar_tareas_por_fecha_rango(self):
+        
+        tareas_filtradas = []
+        fecha_inicio = datetime.strptime(input("Fecha del inicio de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
+        fecha_fin = datetime.strptime(input("Fecha del fin de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
         for proyecto in self.proyectox:
             for tarea in proyecto.tareas:
                 if fecha_inicio <= tarea.fecha_inicio <= fecha_fin:
                     tareas_filtradas.append(tarea)
-        return tareas_filtradas
-        
-    def filtrar_proyectos_por_rango(self, proyectos, fecha_inicio, fecha_fin):
+        for x in tareas_filtradas:
+            print(x.nombre)
+            print(x.fecha_inicio)
+            print(x.fecha_vencimiento)
+            
+    
+    def filtrar_tareas_por_fecha_menor(self):
+        tareas_filtradas = []
+        fecha_inicio = datetime.strptime(input("Fecha del inicio de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
+        for proyecto in self.proyectox:
+            for tarea in proyecto.tareas:
+                if fecha_inicio <= tarea.fecha_inicio:
+                    tareas_filtradas.append(tarea)
+        for x in tareas_filtradas:
+            print(x.nombre)
+            print(x.fecha_inicio)
+            
+    
+    def filtrar_tareas_por_fecha_mayor(self):
+        tareas_filtradas = []
+        fecha_inicio = datetime.strptime(input("Fecha del inicio de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
+        for proyecto in self.proyectox:
+            for tarea in proyecto.tareas:
+                if fecha_inicio >= tarea.fecha_inicio:
+                    tareas_filtradas.append(tarea)
+        for x in tareas_filtradas:
+            print(x.nombre)
+            print(x.fecha_inicio)
+    
+    #FILTRAR TAREAS   Fin
+     
+    #FILTRAR PROYECTOS   Inicio 
+     
+    def filtrar_proyectos_por_fecha_rango(self):
+        proyectos_f = []
+        fecha_inicio = datetime.strptime(input("Fecha del inicio de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
+        fecha_fin = datetime.strptime(input("Fecha del fin de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
+        for proyecto in self.proyectox:
+            if fecha_inicio <= proyecto.fecha_inicio <= fecha_fin: #SI LA FECHA DE INICIO DEL PROYECTO ESTA DENTRO DEL RANGO QUE INGRESO EL USUARIO
+                proyectos_f.append(proyecto)
+        for x in proyectos_f:
+            print(x.nombre)
+            print(x.fecha_inicio)
+            print(x.fecha_vencimiento)
+    
+    def filtrar_proyectos_por_fecha_menor(self):
+        proyectos_f = []
+        fecha_inicio = datetime.strptime(input("Fecha del inicio de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
+        for proyecto in self.proyectox:
+            if fecha_inicio <= proyecto.fecha_inicio: #SI LA FECHA DE INICIO DEL PROYECTO ES MAYOR O IGUAL A LA FECHA QUE INGRESO EL USUARIO
+                proyectos_f.append(proyecto)
+        for x in proyectos_f:
+            print(x.nombre)
+            print(x.fecha_inicio)
+    
+    def filtrar_proyectos_por_fecha_mayor(self):
+        proyectos_f = []
+        fecha_inicio = datetime.strptime(input("Fecha del inicio de rango que quiere buscar (Y-m-d) : "), "%Y-%m-%d")
+        for proyecto in self.proyectox:
+            if fecha_inicio >= proyecto.fecha_inicio: #SI LA FECHA DE INICIO DEL PROYECTO ES MAYOR O IGUAL A LA FECHA QUE INGRESO EL USUARIO
+                proyectos_f.append(proyecto)
+        for x in proyectos_f:
+            print(x.nombre)
+            print(x.fecha_inicio)
+            
+    def filtrar_proyecto_por_id(self):
+        id_proyecto = int(input("Ingrese el id del proyecto: "))
         proyectos_f = []
         for proyecto in self.proyectox:
-            if fecha_inicio <= proyecto.fecha_inicio <= fecha_fin:
-                proyectos_f.append(proyecto)
-        return proyectos_f  
-
-    def filtrar_por_id(self):
-        id_proyecto = int(input("Ingrese el id del proyecto: "))
-        for proyecto in self.proyectox:
             if proyecto.id == id_proyecto:
-                return proyecto
+                proyectos_f.append(proyecto)
+        for x in proyectos_f:
+            print(x.nombre)
+            print(x.id)    
             
+    def filtrar_proyecto_por_estado(self):
+        estado_proyecto = int(input("Ingrese el estado del proyecto: "))
+        proyectos_f = []
+        for proyecto in self.proyectox:
+            if proyecto.estado == estado_proyecto:
+                proyectos_f.append(proyecto)
+        for x in proyectos_f:
+            print(x.nombre)
+            print(x.estado)
+                
+    def filtrar_proyecto_por_empresa(self):
+        empresa_proyecto = int(input("Ingrese la empresa del proyecto: "))
+        proyectos_f = []
+        for proyecto in self.proyectox:
+            if proyecto.empresa == empresa_proyecto:
+                proyectos_f.append(proyecto)
+        for x in proyectos_f:
+            print(x.nombre)
+            print(x.empresa)   
+             
+    #FILTRAR PROYECTOS   Fin
+    
+    #impresion de todas las tareas y subtareas con la info de las subtareas e info relevante sorted jerarquia
+    
+    def opcion_quicksort(self, proyectos):
+        self.quicksort(0, len(proyectos) - 1, proyectos)
+        return proyectos
+    
+    def partition(self, l, r, nume):
+        pivot, ptr = nume[r], l
+        for i in range(l, r):
+            if nume[i].fecha_vencimiento < pivot.fecha_vencimiento:
+                nume[i], nume[ptr] = nume[ptr], nume[i]
+                ptr += 1
+        nume[ptr], nume[r] = nume[r], nume[ptr]
+        return ptr
+
+    def quicksort(self, l, r, nume):
+        if l < r:
+            pi = self.partition(l, r, nume)
+            self.quicksort(l, pi - 1, nume)
+            self.quicksort(pi + 1, r, nume)
+    
+    def imprimir_todo(self):
+        proyectosx = self.opcion_quicksort(self.proyectox)
+        for proyecto in proyectosx:
+            print(proyecto.nombre)
+            print(proyecto.estado)
+            print(proyecto.fecha_inicio)
+            print(proyecto.fecha_vencimiento)
+            print(proyecto.empresa)
+            for tarea in proyecto.tareas:
+                print("\t", tarea.nombre)
+                print("\t", tarea.estado)
+                print("\t", tarea.fecha_inicio)
+                print("\t", tarea.fecha_vencimiento)
+                for subtarea in tarea.subtareas:
+                    print("\t\t", subtarea.nombre)
+                    print("\t\t", subtarea.id)
+                    print("\t\t", subtarea.descripcion)
+                    print("\t\t", subtarea.estado)
+                    
+    # fin de impresion de todas las tareas y subtareas con la info de las subtareas e info relevante sorted jerarquia  
+    """FIN DE MODULO 3  """ 
+    
+    
     def agregar_huevonadas(self):
         id = int(input("Ingrese el id del proyecto: "))
         nombre = input("Ingrese el nombre del proyecto: ")
@@ -241,15 +382,15 @@ class modificar:
         eli = int(input("Cual Proyecto desea eliminar: "))
         eli -= 1
         self.proyectox.pop(eli)
-    
+    """
     def mostrar_huevonadas(self):
-         for proyectos in self.proyectox:
-            print(proyectos.nombre)
-            for tarea in proyectos.tareas:
-                print(tarea.nombre)
+        for proyecto in self.proyectox:
+            print(proyecto.nombre)
+            for tarea in proyecto.tareas:
+                print("\t", tarea.nombre)
                 for subtarea in tarea.subtareas:
-                    print(subtarea.nombre)
-
+                    print("\t\t", subtarea.nombre)
+    """
     def agregar_tareasx(self, proyectoy):
         listoca = ListaEnlazada()
         for tarea in proyectoy.tareas:
@@ -317,16 +458,15 @@ class modificar:
                     print(ele , end = "")
             return listoca
 
-        
-print("Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa \n"
-      +"Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa\n"+
-        "Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa\n"+
-        "Me comí una salchipapa, Ay que cosa tan sabrosa, y se me quedó en la garganta porque no me quedó para la gaseosa")
+
 
 
 proyecto = modificar()
-proyecto.agregar_huevonadas()
-proyecto.mostrar_huevonadas()
+#proyecto.agregar_huevonadas()
+#proyecto.imprimir_todo()
+filtrado = proyecto.filtrar_tareas_por_estado()
+
+
 """
 # Ejemplo de uso:
 
