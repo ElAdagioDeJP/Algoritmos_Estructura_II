@@ -478,13 +478,13 @@ class modificar:
     # fin de impresion de todas las tareas y subtareas con la info de las subtareas e info relevante sorted jerarquia  
     """FIN DE MODULO 3  """ 
     
-    
-    def agregar_huevonadas(self):
+
+    def Agregar_Proyectos(self):
         id = int(input("Ingrese el id del proyecto: "))
         nombre = input("Ingrese el nombre del proyecto: ")
         descripcion = input("Ingrese la descripcion del proyecto: ")
-        fecha_inicio = datetime.strptime(input("Ingrese la fecha de inicio del proyecto: "), "%Y-%m-%d")
-        fecha_vencimiento = datetime.strptime(input("Ingrese la fecha de vencimiento del proyecto: "), "%Y-%m-%d")
+        fecha_inicio = datetime.strptime(input("Ingrese la fecha de inicio del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
+        fecha_vencimiento = datetime.strptime(input("Ingrese la fecha de vencimiento del proyecto (Año-Mes-Dia): "), "%Y-%m-%d")
         estado = input("Ingrese el estado del proyecto: ")
         empresa = input("Ingrese la empresa del proyecto: ")
         gerente = input("Ingrese el gerente del proyecto: ")
@@ -497,7 +497,7 @@ class modificar:
         self.proyectox.append(proyecto)
         
     
-    def eliminando_huevonadas(self):
+    def Eliminar_Proyectos(self):
         print("Proyectos: ")
         for proyectos in self.proyectox:
             print(proyectos.nombre)
@@ -505,7 +505,7 @@ class modificar:
         eli -= 1
         self.proyectox.pop(eli)
     
-    def mostrar_huevonadas(self):
+    def Mostrar_Todo(self):
         for proyecto in self.proyectox:
             print(proyecto.nombre)
             for tarea in proyecto.tareas:
@@ -707,10 +707,10 @@ class modificar:
 proyecto = modificar()
 #proyecto.agregar_huevonadas()
 #proyecto.imprimir_todo_ordenado()
-proyecto.ordenar_tareas_pila()
+#proyecto.ordenar_tareas_pila()
 #proyecto.eliminar_pila()
 #proyecto.agregar_pila()
-proyecto.recorre_pila()
+#proyecto.recorre_pila()
 #proyecto.ordenar_tareas_colas()
 #proyecto.eliminar_cola()
 #proyecto.agrega_cola()

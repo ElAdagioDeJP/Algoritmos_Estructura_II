@@ -46,7 +46,9 @@ class Menu:
                 
             if self.opcion == 1: #Crear Proyecto
                 print("")
-                print("Crear Proyecto")
+                print("Creacion de Proyecto \n")
+                print("")                
+                main.Agregar_Proyectos()
                 
             elif self.opcion == 2: #Modificar Proyecto
                 print("")
@@ -58,11 +60,35 @@ class Menu:
                 
             elif self.opcion == 4: #Eliminar Proyecto
                 print("")
-                print("Eliminar Proyecto")
+                print("Eliminar Proyectos")
+                print("")
+                print("¿Qué proyecto desea eliminar?\n")
+                main.Imprimir_Proyectos()
+                print("")
+                opcion = int(input("Ingrese la opción deseada (1-9): "))
+                while True:
+                    try:
+                        if 1 <= opcion <= 9:
+                            break
+                        else:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input("Ingrese la opción deseada (1-9): "))
+                    except ValueError:
+                        print("Opción inválida, intente de nuevo")
+                        opcion = int(input("Ingrese la opción deseada (1-9): "))
+                main.Eliminar_Proyectos(opcion)
+                print("Proyecto eliminado con éxito")
+                print("")
+                main.Imprimir_Proyectos()
+                
+                
                 
             elif self.opcion == 5: #Listar Proyectos
                 print("")
                 print("Listar Proyectos")
+                print("")
+                main.Imprimir_Proyectos()
+                print("")
                 
             elif self.opcion == 6: #Agregar Tarea
                 print("")
