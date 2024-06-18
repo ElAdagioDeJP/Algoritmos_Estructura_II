@@ -1,5 +1,5 @@
-import ejemplo as ej
-ej = ej.modificar()
+import Main as main
+main = main.modificar()
 
 
 class Menu:
@@ -40,32 +40,44 @@ class Menu:
                     print("Opción inválida, intente de nuevo")
                 
             if self.opcion == 1:
+                print("")
                 print("Crear Proyecto")
                 
             elif self.opcion == 2:
+                print("")
                 print("Modificar Proyecto")
                 
             elif self.opcion == 3:
+                print("")
                 print("Consultar Proyecto")
                 
             elif self.opcion == 4:
+                print("")
                 print("Eliminar Proyecto")
                 
             elif self.opcion == 5:
+                print("")
                 print("Listar Proyectos")
                 
             elif self.opcion == 6:
-                print("Agregar Tarea")
+                print("")
+                print("¿En que proyecto de desea agregar las tareas?\n")
+                print("Nombre de los proyectos: \n")
+                main.Imprimir_Proyectos()
+
                 
             elif self.opcion == 7:
+                print("")
                 print("Tareas")
-                ej.ordenar_tareas_colas()
+                main.ordenar_tareas_colas()
                 
                 
             elif self.opcion == 8:
+                print("")
                 print("Reporte")
                 
             elif self.opcion == 9:
+                print("")
                 print("Desea guardar los cambios realizados?")
                 print("1. Si")
                 print("2. No")

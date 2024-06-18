@@ -280,7 +280,9 @@ class Cola:
 class modificar:
     def __init__(self):    
         ruta_archivo = os.path.join(os.getcwd(), "Proyectos_Algoritmos_2/datos.json")
+        ruta_archivo_subtarea = os.path.join(os.getcwd(), "Proyectos_Algoritmos_2/datos_subtareas.json")
         self.proyectox = cargar_datos_desde_json(ruta_archivo)
+        self.proyectox_subtarea = cargar_datos_desde_json(ruta_archivo_subtarea)
     
     # MODULO 3    
     #FILTRAR TAREAS   Inicio
@@ -459,6 +461,13 @@ class modificar:
                     print("\t\t", subtarea.id)
                     print("\t\t", subtarea.descripcion)
                     print("\t\t", subtarea.estado)
+                    
+    def Imprimir_Proyectos(self):
+        proyectosx = self.proyectox.sort()
+        for proyecto in proyectosx:
+            print(proyecto.nombre)
+        
+        
                     
     # fin de impresion de todas las tareas y subtareas con la info de las subtareas e info relevante sorted jerarquia  
     """FIN DE MODULO 3  """ 
