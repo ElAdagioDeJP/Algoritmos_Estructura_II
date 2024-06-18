@@ -231,7 +231,7 @@ class Pila:
 
 class modificar:
     def __init__(self):    
-        ruta_archivo = "./datos_prueba.json"
+        ruta_archivo = "./datos.json"
         self.proyectox = cargar_datos_desde_json(ruta_archivo)
     
     # MODULO 3    
