@@ -119,8 +119,9 @@ class Menu:
                 print("3. Modificar Tarea")
                 print("4. Eliminar Tarea")
                 print("5. Listar Tareas")
-                
+                print("")
                 opcion = int(input("Ingrese la opción deseada (1-5): "))
+                
                 while True:
                     try:
                         if 1 <= opcion <= 5:
@@ -131,6 +132,109 @@ class Menu:
                     except ValueError:
                         print("Opción inválida, intente de nuevo")
                         opcion = int(input("Ingrese la opción deseada (1-5): "))
+                if opcion == 1:
+                    print("Agregar Tareas al final")
+                    print("")
+                    print("¿En que proyecto de desea agregar las tareas?\n")
+                    print("Nombre de los proyectos: \n")
+                    cont = main.Imprimir_Proyectos()
+                    cont = cont[-1]
+                    print("")
+                    opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    while True:
+                        try:
+                            if 1 <= opcion <= 9:
+                                break
+                            else:
+                                print("Opción inválida, intente de nuevo")
+                                opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                        except ValueError:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    main.agregar_pila()
+                
+                elif opcion == 2:
+                    print("Agregar Tareas en una posición específica")
+                    print("")
+                    print("¿En que proyecto de desea agregar las tareas?\n")
+                    print("Nombre de los proyectos: \n")
+                    cont = main.Imprimir_Proyectos()
+                    cont = cont[-1]
+                    print("")
+                    opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    while True:
+                        try:
+                            if 1 <= opcion <= 9:
+                                break
+                            else:
+                                print("Opción inválida, intente de nuevo")
+                                opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                        except ValueError:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    main.agregar_cola()
+                    
+                elif opcion == 3:
+                    print("Modificar Tarea")
+                    print("")
+                    print("¿En que proyecto de desea modificar las tareas?\n")
+                    print("Nombre de los proyectos: \n")
+                    cont = main.Imprimir_Proyectos()
+                    cont = cont[-1]
+                    print("")
+                    opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    while True:
+                        try:
+                            if 1 <= opcion <= 9:
+                                break
+                            else:
+                                print("Opción inválida, intente de nuevo")
+                                opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                        except ValueError:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    #main.Modificar_Tarea()
+                    
+                elif opcion == 4:
+                    print("Eliminar Tarea")
+                    print("")
+                    print("¿En que proyecto de desea eliminar las tareas?\n")
+                    print("Nombre de los proyectos: \n")
+                    cont = main.Imprimir_Proyectos()
+                    cont = cont[-1]
+                    print("")
+                    opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    while True:
+                        try:
+                            if 1 <= opcion <= 9:
+                                break
+                            else:
+                                print("Opción inválida, intente de nuevo")
+                                opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                        except ValueError:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    #main.Eliminar_Tarea()
+                elif opcion == 5:
+                    print("Listar Tareas")
+                    print("")
+                    print("¿En que proyecto de desea listar las tareas?\n")
+                    print("Nombre de los proyectos: \n")
+                    cont = main.Imprimir_Proyectos()
+                    cont = cont[-1]
+                    print("")
+                    opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    while True:
+                        try:
+                            if 1 <= opcion <= 9:
+                                break
+                            else:
+                                print("Opción inválida, intente de nuevo")
+                                opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                        except ValueError:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input(f"Ingrese la opción deseada (1-{cont}): "))
+                    main.Imprimir_Tareas()
                         
                 
                 
@@ -139,7 +243,15 @@ class Menu:
                 
             elif self.opcion == 8:
                 print("")
-                print("Reporte")
+                print("Reportes\n")
+                print("¿Qué desea hacer?\n")
+                print("1. Consulta de Tareas por Estado:")
+                print("2. Filtrado por Fecha")
+                print("3. Filtrado de Proyectos")
+                print("4. Listar sub tareas\n")
+                
+                
+                
                 
             elif self.opcion == 9:
                 print("")

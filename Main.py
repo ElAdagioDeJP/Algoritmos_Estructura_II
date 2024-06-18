@@ -471,7 +471,15 @@ class modificar:
             print(f"{cont}. {proyecto.nombre}")
             cont_ls.append(cont)
         return cont_ls
-            
+    
+    def Imprimir_Tareas(self):
+        proyectosx = self.opcion_quicksort(self.proyectox)
+        for proyecto in proyectosx:
+            for tarea in proyecto.tareas:
+                print("\t", tarea.nombre)
+                print("\t", tarea.estado)
+                print("\t", tarea.fecha_inicio)
+                print("\t", tarea.fecha_vencimiento)
         
         
                     
@@ -697,7 +705,7 @@ class modificar:
             print("\t",y.fecha_vencimiento.date())
             print("\t",y.estado)
     
-    def agrega_cola(self):
+    def agregar_cola(self):
 
         idt = input("Ingrese el id de la tarea: ")
         nombret = input("Ingrese el nombre de la tarea: ")
@@ -721,6 +729,31 @@ class modificar:
             j -= 1
 
         self.cola.agregar(tareito)
+    """    
+    def agrega_pila(self):
+
+        idt = input("Ingrese el id de la tarea: ")
+        nombret = input("Ingrese el nombre de la tarea: ")
+        empresa_clientet = input("Ingrese la empresa del cliente: ")
+        descripciont = input("Ingrese la descripcion de la tarea: ")
+        fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
+        fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
+        estadot = input("Ingrese el estado de la tarea: ")
+        porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
+        tareito = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)
+        j = int(input("Cuantas subtareas desea agregar: "))
+
+        while j !=0:
+
+            ids = input("Ingrese el id de la subtarea: ")
+            nombres = input("Ingrese el nombre de la subtarea: ")
+            descripcions = input("Ingrese la descripcion de la subtarea: ")
+            estados = input("Ingrese el estado de la subtarea: ")
+            subtareito = Subtarea(ids, nombres, descripcions, estados)
+            tareito.agregar_subtarea(subtareito)
+            j -= 1
+
+        self.pila.agregar(tareito)"""
 
 proyecto = modificar()
 #proyecto.agregar_huevonadas()
