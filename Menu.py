@@ -1,8 +1,16 @@
-
-
 class Menu:
     def __init__(self):
         self.opciones = []
-    def Mostrar_menu(self):
-        for opcion in self.opciones:
-            print(opcion)
+        self.titulo = ""
+        self.menu = ""
+        self.opcion = 0
+        self.salir = False
+    def Mostrar_Menu(self):
+        print("********************************************************************")
+        print("-----------Bienvenido al sistema de manejo administrativo-----------")
+        print("********************************************************************")
+            
+        
+        
+meniu = Menu()
+meniu.Mostrar_Menu()

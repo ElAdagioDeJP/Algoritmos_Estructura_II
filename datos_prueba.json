@@ -13,7 +13,7 @@
         "tareas": [
           {
             "id": 1,
-            "nombre": "Tarea 1",
+            "nombre": "Tarea Reestructuración de la empresa",
             "empresa_cliente": "Empresa A",
             "descripcion": "Descripción de la tarea 1",
             "fecha_inicio": "2024-06-01",
@@ -37,7 +37,7 @@
           },
           {
             "id": 2,
-            "nombre": "Tarea 2",
+            "nombre": "Tarea recursos humanos",
             "empresa_cliente": "Empresa A",
             "descripcion": "Descripción de la tarea 2",
             "fecha_inicio": "2024-06-02",
@@ -67,7 +67,7 @@
           },
           {
             "id": 3,
-            "nombre": "Tarea 3",
+            "nombre": "Tarea Eliminar deudas",
             "empresa_cliente": "Empresa A",
             "descripcion": "Descripción de la tarea 3",
             "fecha_inicio": "2024-06-05",
@@ -85,7 +85,7 @@
           },
           {
             "id": 4,
-            "nombre": "Tarea 4",
+            "nombre": "Tarea Incrementar ventas",
             "empresa_cliente": "Empresa A",
             "descripcion": "Descripción de la tarea 4",
             "fecha_inicio": "2024-06-10",
@@ -115,7 +115,7 @@
           },
           {
             "id": 5,
-            "nombre": "Tarea 5",
+            "nombre": "Tarea aumentar la productividad",
             "empresa_cliente": "Empresa A",
             "descripcion": "Descripción de la tarea 5",
             "fecha_inicio": "2024-06-15",
@@ -164,7 +164,7 @@
         "tareas": [
           {
             "id": 1,
-            "nombre": "Tarea 1",
+            "nombre": "Tarea Limpiar la empresa",
             "empresa_cliente": "Empresa B",
             "descripcion": "Descripción de la tarea 1",
             "fecha_inicio": "2024-07-01",
@@ -201,7 +201,7 @@
         "tareas": [
           {
             "id": 1,
-            "nombre": "Tarea 1",
+            "nombre": "Tarea inteligencia artificial",
             "empresa_cliente": "Empresa C",
             "descripcion": "Descripción de la tarea 1",
             "fecha_inicio": "2024-08-01",
@@ -238,7 +238,7 @@
         "tareas": [
           {
             "id": 1,
-            "nombre": "Tarea 1",
+            "nombre": "Tarea Subcribirse a la revista",
             "empresa_cliente": "Empresa D",
             "descripcion": "Descripción de la tarea 1",
             "fecha_inicio": "2024-09-01",
@@ -275,7 +275,7 @@
         "tareas": [
           {
             "id": 1,
-            "nombre": "Tarea 1",
+            "nombre": "Tarea Extremidades de la empresa",
             "empresa_cliente": "Empresa E",
             "descripcion": "Descripción de la tarea 1",
             "fecha_inicio": "2024-10-01",
