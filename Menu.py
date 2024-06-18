@@ -10,10 +10,11 @@ class Menu:
         self.opcion = 0
         self.salir = False
         self.opcion = 0
+
     def Mostrar_Menu(self):
         while True:
             print("********************************************************************")
-            print("   -----------Bienvenido al sistema de administrativo-----------    ")
+            print("     ------------Bienvenido al sistema administrativo-----------    ")
             print("********************************************************************")
             print("")
             print("¿Qué desea hacer?")
@@ -28,44 +29,50 @@ class Menu:
             print("9. Salir")
             print("")
             print("-----------------------------------------------")
-            while True:
-                try:
-                    self.opcion = int(input("Ingrese la opción deseada (1-9): "))
-                    print("")
-                    if 1 <= self.opcion <= 9:
-                        break
-                    else:
+            print("")
+            opcion = int(input("Ingrese la opción deseada (1-9): "))
+            def Comprobacion(self, opcion):
+                while True:
+                    try:
+                        if 1 <= opcion <= 9:
+                            return opcion
+                        else:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input("Ingrese la opción deseada (1-9): "))
+                    except ValueError:
                         print("Opción inválida, intente de nuevo")
-                except ValueError:
-                    print("Opción inválida, intente de nuevo")
+                        opcion = int(input("Ingrese la opción deseada (1-9): "))
                 
-            if self.opcion == 1:
+            if self.opcion == 1: #Crear Proyecto
                 print("")
                 print("Crear Proyecto")
                 
-            elif self.opcion == 2:
+            elif self.opcion == 2: #Modificar Proyecto
                 print("")
                 print("Modificar Proyecto")
                 
-            elif self.opcion == 3:
+            elif self.opcion == 3: #Consultar Proyecto
                 print("")
                 print("Consultar Proyecto")
                 
-            elif self.opcion == 4:
+            elif self.opcion == 4: #Eliminar Proyecto
                 print("")
                 print("Eliminar Proyecto")
                 
-            elif self.opcion == 5:
+            elif self.opcion == 5: #Listar Proyectos
                 print("")
                 print("Listar Proyectos")
                 
-            elif self.opcion == 6:
+            elif self.opcion == 6: #Agregar Tarea
                 print("")
                 print("¿En que proyecto de desea agregar las tareas?\n")
                 print("Nombre de los proyectos: \n")
-                main.Imprimir_Proyectos()
-
+                cont = main.Imprimir_Proyectos()
+                print("")
+                opcion = Comprobacion(opcion)
                 
+                #f opcion = :
+                    
             elif self.opcion == 7:
                 print("")
                 print("Tareas")
@@ -91,5 +98,5 @@ class Menu:
                 
         
         
-meniu = Menu()
-meniu.Mostrar_Menu()
+menu = Menu()
+menu.Mostrar_Menu()
