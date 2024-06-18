@@ -1,5 +1,5 @@
 from datetime import datetime
-import json
+import json, os
 
 class Proyecto:    
     def __init__(self, id, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, gerente, equipo):
@@ -231,7 +231,7 @@ class Pila:
 
 class modificar:
     def __init__(self):    
-        ruta_archivo = "./datos.json"
+        ruta_archivo = os.path.join(os.getcwd(), "Proyectos_Algoritmos_2/datos.json")
         self.proyectox = cargar_datos_desde_json(ruta_archivo)
     
     # MODULO 3    
