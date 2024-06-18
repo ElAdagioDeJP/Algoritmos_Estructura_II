@@ -2,7 +2,7 @@
     "proyectos": [
       {
         "id": 1,
-        "nombre": "Proyecto 1",
+        "nombre": "Londres",
         "descripcion": "Descripción del proyecto 1",
         "fecha_inicio": "2024-06-01",
         "fecha_vencimiento": "2024-06-30",
@@ -153,7 +153,7 @@
       },
       {
         "id": 2,
-        "nombre": "Proyecto 2",
+        "nombre": "Estocolmo",
         "descripcion": "Descripción del proyecto 2",
         "fecha_inicio": "2024-07-01",
         "fecha_vencimiento": "2024-07-31",
@@ -190,7 +190,7 @@
       },
       {
         "id": 3,
-        "nombre": "Proyecto 3",
+        "nombre": "Paris",
         "descripcion": "Descripción del proyecto 3",
         "fecha_inicio": "2024-08-01",
         "fecha_vencimiento": "2024-08-31",
@@ -227,7 +227,7 @@
       },
       {
         "id": 4,
-        "nombre": "Proyecto 4",
+        "nombre": "Helsinki",
         "descripcion": "Descripción del proyecto 4",
         "fecha_inicio": "2024-09-01",
         "fecha_vencimiento": "2024-09-30",
@@ -264,7 +264,7 @@
       },
       {
         "id": 5,
-        "nombre": "Proyecto 5",
+        "nombre": "Tokio",
         "descripcion": "Descripción del proyecto 5",
         "fecha_inicio": "2024-10-01",
         "fecha_vencimiento": "2024-10-31",
@@ -301,7 +301,7 @@
       },
       {
         "id": 6,
-        "nombre": "Proyecto 6",
+        "nombre": "Barcelona",
         "descripcion": "Descripción del proyecto 6",
         "fecha_inicio": "2024-11-01",
         "fecha_vencimiento": "2024-11-30",
@@ -338,7 +338,7 @@
       },
       {
         "id": 7,
-        "nombre": "Proyecto 7",
+        "nombre": "Moscu",
         "descripcion": "Descripción del proyecto 7",
         "fecha_inicio": "2024-12-01",
         "fecha_vencimiento": "2024-12-31",
@@ -375,7 +375,7 @@
       },
       {
         "id": 8,
-        "nombre": "Proyecto 8",
+        "nombre": "Berlin",
         "descripcion": "Descripción del proyecto 8",
         "fecha_inicio": "2025-01-01",
         "fecha_vencimiento": "2025-01-31",
@@ -412,7 +412,7 @@
       },
       {
         "id": 9,
-        "nombre": "Proyecto 9",
+        "nombre": "Dublin",
         "descripcion": "Descripción del proyecto 9",
         "fecha_inicio": "2025-02-01",
         "fecha_vencimiento": "2025-02-28",
@@ -449,7 +449,7 @@
       },
       {
         "id": 10,
-        "nombre": "Proyecto 10",
+        "nombre": "Kiev",
         "descripcion": "Descripción del proyecto 10",
         "fecha_inicio": "2025-03-01",
         "fecha_vencimiento": "2024-12-31",
