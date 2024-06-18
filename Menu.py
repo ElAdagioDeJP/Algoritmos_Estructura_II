@@ -42,6 +42,7 @@ class Menu:
                     except ValueError:
                         print("Opción inválida, intente de nuevo")
                         opcion = int(input("Ingrese la opción deseada (1-9): "))
+            self.opcion = Comprobacion(self, opcion)
                 
             if self.opcion == 1: #Crear Proyecto
                 print("")
@@ -69,7 +70,17 @@ class Menu:
                 print("Nombre de los proyectos: \n")
                 cont = main.Imprimir_Proyectos()
                 print("")
-                opcion = Comprobacion(opcion)
+                opcion = int(input("Ingrese la opción deseada (1-9): "))
+                while True:
+                    try:
+                        if 1 <= opcion <= 9:
+                            break
+                        else:
+                            print("Opción inválida, intente de nuevo")
+                            opcion = int(input("Ingrese la opción deseada (1-9): "))
+                    except ValueError:
+                        print("Opción inválida, intente de nuevo")
+                        opcion = int(input("Ingrese la opción deseada (1-9): "))
                 
                 #f opcion = :
                     

@@ -600,13 +600,26 @@ class modificar:
         
         pila_ordenada = self.opcion_quicksort(pilal)
         return pila_ordenada
-    def ordenar_tareas_pila(self):  
-        pila_ordenada = self.pilas_tareas()  
-        pila = Pila()
+    
+    def ordenar_tareas_pila(self):
+        pila_ordenada = self.pilas_tareas()
+        self.pila = Pila()
         for x in pila_ordenada:
-            pila.agregar(x)
-        for y in pila:
+            self.pila.agregar(x)
+        for y in self.pila:
             print("")
+            print("\t",y.nombre)
+            print("\t",y.empresa_cliente)
+            print("\t",y.descripcion)
+            print("\t",y.fecha_inicio.date())
+            print("\t",y.fecha_vencimiento.date())
+            print("\t",y.estado)
+    def eliminar_pila(self):
+        self.pila.eliminar()
+
+    def recorre_pila(self):
+        for y in self.pila:
+            print("lista buena ")
             print("\t",y.nombre)
             print("\t",y.empresa_cliente)
             print("\t",y.descripcion)
@@ -616,11 +629,11 @@ class modificar:
 
     def ordenar_tareas_colas(self):
         pila_ordenada = self.pilas_tareas2()
-        cola = Cola()
+        self.cola = Cola()
         for x in pila_ordenada:
-            cola.agregar(x)
-        cola.eliminar()
-        for y in cola:
+            self.cola.agregar(x)
+
+        for y in self.cola:
             print("")
             print("\t",y.nombre)
             print("\t",y.empresa_cliente)
@@ -628,21 +641,29 @@ class modificar:
             print("\t",y.fecha_inicio.date())
             print("\t",y.fecha_vencimiento.date())
             print("\t",y.estado)
-           
-            
-            
-            
 
-        
-    
+    def eliminar_cola(self):
+        self.cola.eliminar()
 
-
+    def recorre_cola(self):
+        for y in self.cola:
+            print("")
+            print("\t",y.nombre)
+            print("\t",y.empresa_cliente)
+            print("\t",y.descripcion)
+            print("\t",y.fecha_inicio.date())
+            print("\t",y.fecha_vencimiento.date())
+            print("\t",y.estado)
 
 proyecto = modificar()
 #proyecto.agregar_huevonadas()
 #proyecto.imprimir_todo_ordenado()
 #proyecto.ordenar_tareas_pila()
+#proyecto.eliminar_pila()
+#proyecto.recorre_pila()
 proyecto.ordenar_tareas_colas()
+proyecto.eliminar_cola()
+proyecto.recorre_cola()
 
 
 
