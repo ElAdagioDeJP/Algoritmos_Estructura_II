@@ -1,24 +1,21 @@
 import json
 
-# Function to export data to a JSON file
-def export_data(data, filename):
-    with open(filename, 'w') as file:
-        json.dump(data, file)
+def cargar_configuracion(config_path='config.txt'):
+    configuracion = {}
+    with open(config_path, 'r') as file:
+        for line in file:
+            key, value = line.strip().split('=')
+            configuracion[key] = value
+    return configuracion
 
-# Function to import data from a JSON file
-def import_data(filename):
-    with open(filename, 'r') as file:
-        data = json.load(file)
-    return data
+def cargar_datos(datos_path):
+    with open(datos_path, 'r') as file:
+        return json.load(file)
 
-# Example usage
-data = {'name': 'John', 'age': 30, 'city': 'New York'}
+def guardar_datos(datos, datos_path):
+    with open(datos_path, 'w') as file:
+        json.dump(datos, file, indent=4)
 
-# Export data to a JSON file
-export_data(data, 'data.json')
-
-# Import data from a JSON file
-imported_data = import_data('data.json')
-
-# Print the imported data
-print(imported_data)
+def cargar_subtareas(subtareas_path):
+    with open(subtareas_path, 'r') as file:
+        return json.load(file)
