@@ -11,7 +11,7 @@ class Menu:
     def Mostrar_Menu(self):
         while True:
             print("********************************************************************")
-            print("-----------Bienvenido al sistema de manejo administrativo-----------")
+            print("   -----------Bienvenido al sistema de administrativo-----------    ")
             print("********************************************************************")
             print("")
             print("¿Qué desea hacer?")
@@ -26,39 +26,43 @@ class Menu:
             print("9. Salir")
             print("")
             print("-----------------------------------------------")
-            self.opcion = input("Ingrese la opción deseada (1-9): ")
-            try:
-                self.opcion = input("Ingrese la opción deseada (1-9): ")
-            except ValueError:
-                print("Opción inválida, intente de nuevo")
-                self.opcion = input("Ingrese la opción deseada (1-9): ")
+            while True:
+                try:
+                    self.opcion = int(input("Ingrese la opción deseada (1-9): "))
+                    print("")
+                    if 1 <= self.opcion <= 9:
+                        break
+                    else:
+                        print("Opción inválida, intente de nuevo")
+                except ValueError:
+                    print("Opción inválida, intente de nuevo")
                 
-            if self.opcion == "1":
+            if self.opcion == 1:
                 print("Crear Proyecto")
                 
-            elif self.opcion == "2":
+            elif self.opcion == 2:
                 print("Modificar Proyecto")
                 
-            elif self.opcion == "3":
+            elif self.opcion == 3:
                 print("Consultar Proyecto")
                 
-            elif self.opcion == "4":
+            elif self.opcion == 4:
                 print("Eliminar Proyecto")
                 
-            elif self.opcion == "5":
+            elif self.opcion == 5:
                 print("Listar Proyectos")
                 
-            elif self.opcion == "6":
+            elif self.opcion == 6:
                 print("Agregar Tarea")
                 
-            elif self.opcion == "7":
+            elif self.opcion == 7:
                 print("Tareas")
                 
                 
-            elif self.opcion == "8":
+            elif self.opcion == 8:
                 print("Reporte")
                 
-            elif self.opcion == "9":
+            elif self.opcion == 9:
                 print("Desea guardar los cambios realizados?")
                 print("1. Si")
                 print("2. No")

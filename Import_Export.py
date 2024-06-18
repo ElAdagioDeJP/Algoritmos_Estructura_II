@@ -1,7 +1,6 @@
 import json, os
 import ejemplo as ej
 
-ej.crear_proyecto('Proyecto 1', '2021-10-10', '2021-10-20', 'Proyecto de prueba', 'Proyecto 1')
 
 def cargar_configuracion(config_path='config.txt'):
     configuracion = {}
