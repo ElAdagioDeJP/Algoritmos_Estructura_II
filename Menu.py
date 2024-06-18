@@ -1,4 +1,6 @@
-import Import_Export
+import ejemplo as ej
+ej = ej.modificar()
+
 
 class Menu:
     def __init__(self):
@@ -57,6 +59,7 @@ class Menu:
                 
             elif self.opcion == 7:
                 print("Tareas")
+                ej.ordenar_tareas_colas()
                 
                 
             elif self.opcion == 8:

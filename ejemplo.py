@@ -51,7 +51,7 @@ class Subtarea:
         
 def cargar_datos_desde_json(nombre_archivo):
     proyectos = []
-    with open(nombre_archivo, "r") as archivo:
+    with open(nombre_archivo, "r", encoding='utf-8') as archivo:
         datos = json.load(archivo)
         for proyecto_data in datos["proyectos"]:
             proyecto = Proyecto(
@@ -306,8 +306,8 @@ class modificar:
                     tareas_filtradas.append(tarea)
         for x in tareas_filtradas:
             print(x.nombre)
-            print(x.fecha_inicio)
-            print(x.fecha_vencimiento)
+            print(x.fecha_inicio.date())
+            print(x.fecha_vencimiento.date())
             
     
     def filtrar_tareas_por_fecha_menor(self):
@@ -319,7 +319,7 @@ class modificar:
                     tareas_filtradas.append(tarea)
         for x in tareas_filtradas:
             print(x.nombre)
-            print(x.fecha_inicio)
+            print(x.fecha_inicio.date())
             
     
     def filtrar_tareas_por_fecha_mayor(self):
@@ -331,7 +331,7 @@ class modificar:
                     tareas_filtradas.append(tarea)
         for x in tareas_filtradas:
             print(x.nombre)
-            print(x.fecha_inicio)
+            print(x.fecha_inicio.date())
     
     #FILTRAR TAREAS   Fin
      
@@ -346,8 +346,8 @@ class modificar:
                 proyectos_f.append(proyecto)
         for x in proyectos_f:
             print(x.nombre)
-            print(x.fecha_inicio)
-            print(x.fecha_vencimiento)
+            print(x.fecha_inicio.date())
+            print(x.fecha_vencimiento.date())
     
     def filtrar_proyectos_por_fecha_menor(self):
         proyectos_f = []
@@ -357,7 +357,7 @@ class modificar:
                 proyectos_f.append(proyecto)
         for x in proyectos_f:
             print(x.nombre)
-            print(x.fecha_inicio)
+            print(x.fecha_inicio.date())
     
     def filtrar_proyectos_por_fecha_mayor(self):
         proyectos_f = []
@@ -367,7 +367,7 @@ class modificar:
                 proyectos_f.append(proyecto)
         for x in proyectos_f:
             print(x.nombre)
-            print(x.fecha_inicio)
+            print(x.fecha_inicio.date())
             
     def filtrar_proyecto_por_id(self):
         id_proyecto = int(input("Ingrese el id del proyecto: "))
@@ -489,7 +489,7 @@ class modificar:
         eli = int(input("Cual Proyecto desea eliminar: "))
         eli -= 1
         self.proyectox.pop(eli)
-    """
+    
     def mostrar_huevonadas(self):
         for proyecto in self.proyectox:
             print(proyecto.nombre)
@@ -497,7 +497,7 @@ class modificar:
                 print("\t", tarea.nombre)
                 for subtarea in tarea.subtareas:
                     print("\t\t", subtarea.nombre)
-    """
+    
     def agregar_tareasx(self, proyectoy):
         listoca = ListaEnlazada()
         for tarea in proyectoy.tareas:
@@ -591,12 +591,12 @@ class modificar:
         for x in pila_ordenada:
             pila.agregar(x)
         for y in pila:
-            
+            print("")
             print("\t",y.nombre)
             print("\t",y.empresa_cliente)
             print("\t",y.descripcion)
-            print("\t",y.fecha_inicio)
-            print("\t",y.fecha_vencimiento)
+            print("\t",y.fecha_inicio.date())
+            print("\t",y.fecha_vencimiento.date())
             print("\t",y.estado)
 
     def ordenar_tareas_colas(self):
@@ -606,11 +606,12 @@ class modificar:
             cola.agregar(x)
         cola.eliminar()
         for y in cola:
+            print("")
             print("\t",y.nombre)
             print("\t",y.empresa_cliente)
             print("\t",y.descripcion)
-            print("\t",y.fecha_inicio)
-            print("\t",y.fecha_vencimiento)
+            print("\t",y.fecha_inicio.date())
+            print("\t",y.fecha_vencimiento.date())
             print("\t",y.estado)
            
             
@@ -625,8 +626,8 @@ class modificar:
 proyecto = modificar()
 #proyecto.agregar_huevonadas()
 #proyecto.imprimir_todo_ordenado()
-#proyecto.ordenar_tareas_pila()
-#proyecto.ordenar_tareas_colas()
+proyecto.ordenar_tareas_pila()
+proyecto.ordenar_tareas_colas()
 
 
 
