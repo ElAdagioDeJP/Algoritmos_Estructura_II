@@ -382,7 +382,7 @@ class modificar:
             print(x.id)    
             
     def filtrar_proyecto_por_estado(self):
-        estado_proyecto = int(input("Ingrese el estado del proyecto: "))
+        estado_proyecto = input("Ingrese el estado del proyecto: ")
         proyectos_f = []
         for proyecto in self.proyectox:
             if proyecto.estado == estado_proyecto:
@@ -480,7 +480,8 @@ class modificar:
                 print("\t", tarea.estado)
                 print("\t", tarea.fecha_inicio)
                 print("\t", tarea.fecha_vencimiento)
-        
+    
+    
         
                     
     # fin de impresion de todas las tareas y subtareas con la info de las subtareas e info relevante sorted jerarquia  
@@ -512,9 +513,8 @@ class modificar:
         
     
     def Eliminar_Proyectos(self):
-        print("Proyectos: ")
-        for proyectos in self.proyectox:
-            print(proyectos.nombre)
+       
+        
         eli = int(input("Cual Proyecto desea eliminar: "))
         eli -= 1
         self.proyectox.pop(eli)
@@ -676,6 +676,7 @@ class modificar:
             j -= 1
 
         self.pila.agregar(tareito)
+        
 
     def ordenar_tareas_colas(self):
         pila_ordenada = self.pilas_tareas2()
@@ -729,6 +730,7 @@ class modificar:
             j -= 1
 
         self.cola.agregar(tareito)
+       
     """    
     def agrega_pila(self):
 
