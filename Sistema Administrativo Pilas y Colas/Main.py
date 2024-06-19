@@ -392,7 +392,7 @@ class modificar:
             print(x.estado)
                 
     def filtrar_proyecto_por_empresa(self):
-        empresa_proyecto = int(input("Ingrese la empresa del proyecto: "))
+        empresa_proyecto = input("Ingrese la empresa del proyecto: ")
         proyectos_f = []
         for proyecto in self.proyectox:
             if proyecto.empresa == empresa_proyecto:
@@ -567,6 +567,7 @@ class modificar:
                 for ele in listoca:
                     print(ele , end = "")
             return listoca
+        
         elif a == "s":
             for ele in listoca:
                 print(ele , end = "")
@@ -731,62 +732,5 @@ class modificar:
 
         self.cola.agregar(tareito)
        
-    """    
-    def agrega_pila(self):
-
-        idt = input("Ingrese el id de la tarea: ")
-        nombret = input("Ingrese el nombre de la tarea: ")
-        empresa_clientet = input("Ingrese la empresa del cliente: ")
-        descripciont = input("Ingrese la descripcion de la tarea: ")
-        fecha_iniciot = datetime.strptime(input("Ingrese la fecha de inicio de la tarea: "), "%Y-%m-%d")
-        fecha_vencimientot = datetime.strptime(input("Ingrese la fecha de vencimiento de la tarea: "), "%Y-%m-%d")
-        estadot = input("Ingrese el estado de la tarea: ")
-        porcentajet = int(input("Ingrese el porcentaje de la tarea: "))
-        tareito = Tarea(idt, nombret, empresa_clientet, descripciont, fecha_iniciot, fecha_vencimientot, estadot, porcentajet)
-        j = int(input("Cuantas subtareas desea agregar: "))
-
-        while j !=0:
-
-            ids = input("Ingrese el id de la subtarea: ")
-            nombres = input("Ingrese el nombre de la subtarea: ")
-            descripcions = input("Ingrese la descripcion de la subtarea: ")
-            estados = input("Ingrese el estado de la subtarea: ")
-            subtareito = Subtarea(ids, nombres, descripcions, estados)
-            tareito.agregar_subtarea(subtareito)
-            j -= 1
-
-        self.pila.agregar(tareito)"""
 
 proyecto = modificar()
-#proyecto.agregar_huevonadas()
-#proyecto.imprimir_todo_ordenado()
-#proyecto.ordenar_tareas_pila()
-#proyecto.eliminar_pila()
-#proyecto.agregar_pila()
-#proyecto.recorre_pila()
-#proyecto.ordenar_tareas_colas()
-#proyecto.eliminar_cola()
-#proyecto.agrega_cola()
-#proyecto.recorre_cola()
-
-
-"""
-# Ejemplo de uso:
-
-# Creamos algunos objetos de la clase Carro
-carro1 = Carro("Toyota", "Corolla")
-carro2 = Carro("Honda", "Accord")
-carro3 = Carro("Ford", "Mustang")
-carro4 = Carro("Chevrolet", "Camaro")
-
-# Creamos la lista enlazada y agregamos algunos carros
-autos = ListaEnlazada()
-autos.agregar(carro1)
-autos.agregar(carro2)
-autos.agregar(carro3)
-
-lista = list(autos)
-"""
-
-
-
