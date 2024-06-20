@@ -51,7 +51,7 @@ class Subtarea:
         
 def cargar_datos_desde_json(nombre_archivo):
     proyectos = []
-    with open(nombre_archivo, "r", encoding='utf-8') as archivo:
+    with open(nombre_archivo, "r") as archivo:
         datos = json.load(archivo)
         for proyecto_data in datos["proyectos"]:
             proyecto = Proyecto(
@@ -278,8 +278,8 @@ class Cola:
             self._recorrer_aux(nodo.siguiente)
 
 class modificar:
-    def __init__(self):    
-        ruta_archivo = os.path.join(os.getcwd(), "Proyectos_Algoritmos_2/datos.json")
+    def __init__(self):   #Para que funcione necesita la direccion directa del archivo json
+        ruta_archivo = "C:/Users/ElAdagioDeJP/Documents/GitHub/Proyectos_Algoritmos_2/Sistema Administrativo Pilas y Colas/datos.json"
         #ruta_archivo_subtarea = os.path.join(os.getcwd(), "Proyectos_Algoritmos_2/datos_subtareas.json")
         self.proyectox = cargar_datos_desde_json(ruta_archivo)
         #self.proyectox_subtarea = cargar_datos_desde_json(ruta_archivo_subtarea)
