@@ -1,4 +1,9 @@
+import EmpresaProyectos
 
+datos = EmpresaProyectos
+lista_enla = datos.ListaEnlazada()
+archivo = datos.UtilizarArchivo()
+modificar = datos.ModificarCsv()
 
 class Menu:
     def __init__(self):
@@ -7,6 +12,7 @@ class Menu:
     def Validar(self):
         while True:
             try:
+                print("")
                 opcion = int(input("Ingrese una opcion: "))
                 print("")
                 break
@@ -37,7 +43,6 @@ class Menu:
         print("5. Reportes")
         print("6. Salir")
         opcion = self.Validar()
-        print("")
         
         if opcion == 1: #Menu para las Empresas
             print("|||||||||||||||||||||||||||||||||||||||||||||||||")
@@ -52,14 +57,54 @@ class Menu:
             opcion = self.Validar()
             print("")
             if opcion == 1: # Las diferentes opciones para realizar en las Empresas
-                print("...Desea Crear una Empresa \n")
-                
+                print("...Desea Crear una Empresa")
+                print("Ingrese los datos de la nueva Empresa: \n")
+                Id = archivo.Lencsv()
+                nombre = input("Nombre de la Empresa: ")
+                descripcion = input("Descripcion de la Empresa: ")
+                fecha_creacion = input("Fecha de Creacion de la Empresa: ")
+                direccion = input("Direccion de la Empresa: ")
+                telefono = input("Telefono de la Empresa: ")
+                correo = input("Correo de la Empresa: ")
+                gerente = input("Nombre del Gerente de la Empresa: ")           
+                equipo_contacto = input("Equipo de Contacto de la Empresa: ")
+                lista_enla.agregar([Id, nombre, descripcion, fecha_creacion, direccion, telefono, correo, gerente, equipo_contacto])
+                datos.ModificarCsv()
             elif opcion == 2:
                 print("...Desea enlistar todas las Empresas \n")
                 
             elif opcion == 3:
                 print("...Desea Modificar una Empresa \n")
+                print("Por: \n")
+                print("1. Modificar un Dato de la Empresa")
+                print("2. Modificar Toda la Empresa")
+                print("3. Regresar al Menu 'Inicial'")
+                opcion2 = self.Validar()
                 
+                
+                if opcion2 == 1:
+                    print("¿Que dato desea modificar?")
+                    print("1. ID")
+                    print("2. Nombre")
+                    print("3. Descripcion")
+                    print("4. Fecha de Creacion")
+                    print("5. Direccion")
+                    print("6. Telefono")
+                    print("7. Correo")
+                    print("8. Gerente")
+                    print("9. Equipo de Contacto")
+                    print("10. Regresar al Menu 'Inicial'")
+                    opcion3 = self.Validar()
+                    
+                    if opcion3 == 1:
+                        print("Modificando el ID")
+                        
+                    elif opcion3 == 2:
+                        print("Modificando el Nombre")
+                        
+                    elif opcion3 == 3:
+                        print("Modificando la Descripcion")
+                            
             elif opcion == 4:
                 print("...Desea Consultar alguna Empresa \n")
             
@@ -85,6 +130,7 @@ class Menu:
             
             if opcion == 1: # Las diferentes opciones para realizar en los Proyectos
                 print("...Desea Crear un Proyecto \n")
+                
                 
             elif opcion == 2:
                 print("...Desea enlistar todos los proyectos \n")
@@ -120,7 +166,6 @@ class Menu:
                 print("Consulte por: \n")
                 self.ConsultarPor()
                 opcion2 = self.Validar()
-                print("")
                 
                 if opcion2 == 1:
                     print("Consultando por ID")
@@ -175,17 +220,17 @@ class Menu:
             print("||||||||||||||||Gestor de subTareas|||||||||||||||||")
             print("||||||||||||||||||||||||||||||||||||||||||||||||||||")
 
+            
         elif opcion == 5:
             print("||||||||||||||||||||||||||||||||||||||||||||||||||||")
             print("||||||||||||||||||| Reportes |||||||||||||||||||||||")
             print("||||||||||||||||||||||||||||||||||||||||||||||||||||")
             
-        elif opcion == 6:
+        
+        if opcion == 6:
             return
         
-        else:
-            print('Seleccione alguna opcion') 
-            self.verMenu()
+        self.verMenu()
             
 menu = Menu()
 menu.verMenu()
