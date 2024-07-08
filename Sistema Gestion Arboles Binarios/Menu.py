@@ -179,8 +179,10 @@ class Menu:
             print("||||||||||||||||||||||||||||||||||||||||||||||||||||")
             print("||||||||||||||||||| Reportes |||||||||||||||||||||||")
             print("||||||||||||||||||||||||||||||||||||||||||||||||||||")
+            
         elif opcion == 6:
             return
+        
         else:
             print('Seleccione alguna opcion') 
             self.verMenu()

@@ -1,4 +1,3 @@
-
 class Empresa:
     def __init__(self, id, nombre, descripcion, fecha_creacion, direccion, telefono, correo, gerente, equipo_contacto):
         self.id = id
@@ -11,8 +10,6 @@ class Empresa:
         self.gerente = gerente
         self.equipo_contacto = equipo_contacto
         self.proyectos = []
-        
-        
 class Proyectos:
     def __init__(self, id, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado_actual, empresa, gerente, equipo):
         self.id = id
@@ -25,8 +22,6 @@ class Proyectos:
         self.gerente = gerente
         self.equipo = equipo
         self.tareas = []
-        
-
 class Tareas:
     def __init__(self, id, nombre, empresa,  cliente, descripcion, fecha_inicio, fecha_vencimiento, estado_actual, porcentaje):
         self.id = id
@@ -38,7 +33,7 @@ class Tareas:
         self.fecha_vencimiento = fecha_vencimiento
         self.estado_actual = estado_actual
         self.porcentaje = porcentaje
-        
+        self.subtareas = []
 class subTareas:
     def __init__(self, id, nombre, empresa,  cliente, descripcion, fecha_inicio, fecha_vencimiento, estado_actual, porcentaje):
         self.id = id
