@@ -5,7 +5,7 @@ import os
 print("Directorio de trabajo actual:", os.getcwd())
 
 # Cambiar el directorio de trabajo si es necesario
-os.chdir('C:/Users/ElAdagioDeJP/Documents/GitHub/Proyectos_Algoritmos_2/Sistema Gestion Arboles Binarios')
+os.chdir('C:/Users/ElAdagioDeJP/Documents/GitHub/Algoritmos_Estructura_II/Sistema Gestion Arboles Binarios')
 print("Directorio de trabajo después de cambiar:", os.getcwd())
 
 class Nodo:
@@ -134,15 +134,107 @@ class UtilizarArchivo:
             for row in reader:
                 cont += 1
         return cont + 1
-                
-    
 
+class NodoArchivo:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        
+        self.izquierda = None
+        self.derecha = None
+        self.altura = 1
 
-            
+class ArbolAvl:
+    def __init__(self):
+        self.raiz = None
+
+    def obtener_altura(self, nodo):
+        if not nodo:
+            return 0
+        return nodo.altura
+
+    def obtener_balance(self, nodo):
+        if not nodo:
+            return 0
+        return self.obtener_altura(nodo.izquierda) - self.obtener_altura(nodo.derecha)
+
+    def rotar_derecha(self, z):
+        y = z.izquierda
+        T3 = y.derecha
+
+        y.derecha = z
+        z.izquierda = T3
+
+        z.altura = 1 + max(self.obtener_altura(z.izquierda), self.obtener_altura(z.derecha))
+        y.altura = 1 + max(self.obtener_altura(y.izquierda), self.obtener_altura(y.derecha))
+
+        return y
+
+    def rotar_izquierda(self, z):
+        y = z.derecha
+        T2 = y.izquierda
+
+        y.izquierda = z
+        z.derecha = T2
+
+        z.altura = 1 + max(self.obtener_altura(z.izquierda), self.obtener_altura(z.derecha))
+        y.altura = 1 + max(self.obtener_altura(y.izquierda), self.obtener_altura(y.derecha))
+
+        return y
+
+    def insertar(self, nodo, nombre):
+        if not nodo:
+            return NodoArchivo(nombre)
+
+        if nombre < nodo.nombre:
+            nodo.izquierda = self.insertar(nodo.izquierda, nombre)
+        elif nombre > nodo.nombre:
+            nodo.derecha = self.insertar(nodo.derecha, nombre)
+        else:
+            return nodo
+
+        nodo.altura = 1 + max(self.obtener_altura(nodo.izquierda), self.obtener_altura(nodo.derecha))
+
+        balance = self.obtener_balance(nodo)
+
+        if balance > 1 and nombre < nodo.izquierda.nombre:
+            return self.rotar_derecha(nodo)
+
+        if balance < -1 and nombre > nodo.derecha.nombre:
+            return self.rotar_izquierda(nodo)
+
+        if balance > 1 and nombre > nodo.izquierda.nombre:
+            nodo.izquierda = self.rotar_izquierda(nodo.izquierda)
+            return self.rotar_derecha(nodo)
+
+        if balance < -1 and nombre < nodo.derecha.nombre:
+            nodo.derecha = self.rotar_derecha(nodo.derecha)
+            return self.rotar_izquierda(nodo)
+
+        return nodo
+
+    def insertar_archivo(self, nombre):
+        self.raiz = self.insertar(self.raiz, nombre)
+
+    def inorder(self, nodo):
+        if nodo:
+            self.in_order(nodo.izquierda)
+            print(nodo.nombre)
+            self.in_order(nodo.derecha)
+
 lista_enla = ListaEnlazada()    
 Archivo = UtilizarArchivo()
 Archivo.ExportarArchivo(lista_enla)
+lista_prueba = ([1, 'Juan', 'Perez', 'Ingeniero', 'Desarrollador', 'Proyecto 1', 'Proyecto 2', 'Proyecto 3', 'Proyecto 4', 'Proyecto 5'],)
+arbolavl = ArbolAvl()
 
+arbolavl.insertar_archivo(10)
+arbolavl.insertar_archivo(20)
+arbolavl.insertar_archivo(30)
+arbolavl.insertar_archivo(40)
+arbolavl.insertar_archivo(50)
+arbolavl.insertar_archivo(25)
+
+arbolavl.inorder()
 
 def ModificarCsv():
     with open('Data.csv', mode='w', newline='', encoding='utf-8') as file:
@@ -151,8 +243,3 @@ def ModificarCsv():
             writer.writerow(i)
             
 ModificarCsv()
-
-
-
-                                
-
