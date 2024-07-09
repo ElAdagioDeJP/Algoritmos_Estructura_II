@@ -1,6 +1,7 @@
 import csv
 import os
-
+from datetime import datetime
+import json, os
 # Verificar el directorio de trabajo actual
 print("Directorio de trabajo actual:", os.getcwd())
 
@@ -112,6 +113,7 @@ class ListaEnlazada:
         actual.siguiente = actual.siguiente.siguiente
         self.longitud -= 1
         return valor
+    
 
 class UtilizarArchivo: 
     def __init__(self):
@@ -134,112 +136,101 @@ class UtilizarArchivo:
             for row in reader:
                 cont += 1
         return cont + 1
+    
 
-class NodoArchivo:
-    def __init__(self, nombre):
-        self.nombre = nombre
         
-        self.izquierda = None
-        self.derecha = None
-        self.altura = 1
+    
+class AVLNode:
+    def __init__(self, key, project):
+        self.key = key
+        self.project = project
+        self.height = 1
+        self.left = None
+        self.right = None
 
-class ArbolAvl:
+class AVLTree:
     def __init__(self):
-        self.raiz = None
+        self.root = None
 
-    def obtener_altura(self, nodo):
-        if not nodo:
-            return 0
-        return nodo.altura
-
-    def obtener_balance(self, nodo):
-        if not nodo:
-            return 0
-        return self.obtener_altura(nodo.izquierda) - self.obtener_altura(nodo.derecha)
-
-    def rotar_derecha(self, z):
-        y = z.izquierda
-        T3 = y.derecha
-
-        y.derecha = z
-        z.izquierda = T3
-
-        z.altura = 1 + max(self.obtener_altura(z.izquierda), self.obtener_altura(z.derecha))
-        y.altura = 1 + max(self.obtener_altura(y.izquierda), self.obtener_altura(y.derecha))
-
-        return y
-
-    def rotar_izquierda(self, z):
-        y = z.derecha
-        T2 = y.izquierda
-
-        y.izquierda = z
-        z.derecha = T2
-
-        z.altura = 1 + max(self.obtener_altura(z.izquierda), self.obtener_altura(z.derecha))
-        y.altura = 1 + max(self.obtener_altura(y.izquierda), self.obtener_altura(y.derecha))
-
-        return y
-
-    def insertar(self, nodo, nombre):
-        if not nodo:
-            return NodoArchivo(nombre)
-
-        if nombre < nodo.nombre:
-            nodo.izquierda = self.insertar(nodo.izquierda, nombre)
-        elif nombre > nodo.nombre:
-            nodo.derecha = self.insertar(nodo.derecha, nombre)
+    def insert(self, root, key, project):
+        if not root:
+            return AVLNode(key, project)
+        elif key < root.key:
+            root.left = self.insert(root.left, key, project)
         else:
-            return nodo
+            root.right = self.insert(root.right, key, project)
 
-        nodo.altura = 1 + max(self.obtener_altura(nodo.izquierda), self.obtener_altura(nodo.derecha))
+        root.height = 1 + max(self.getHeight(root.left), self.getHeight(root.right))
 
-        balance = self.obtener_balance(nodo)
+        balance = self.getBalance(root)
 
-        if balance > 1 and nombre < nodo.izquierda.nombre:
-            return self.rotar_derecha(nodo)
+        if balance > 1 and key < root.left.key:
+            return self.rightRotate(root)
 
-        if balance < -1 and nombre > nodo.derecha.nombre:
-            return self.rotar_izquierda(nodo)
+        if balance < -1 and key > root.right.key:
+            return self.leftRotate(root)
 
-        if balance > 1 and nombre > nodo.izquierda.nombre:
-            nodo.izquierda = self.rotar_izquierda(nodo.izquierda)
-            return self.rotar_derecha(nodo)
+        if balance > 1 and key > root.left.key:
+            root.left = self.leftRotate(root.left)
+            return self.rightRotate(root)
 
-        if balance < -1 and nombre < nodo.derecha.nombre:
-            nodo.derecha = self.rotar_derecha(nodo.derecha)
-            return self.rotar_izquierda(nodo)
+        if balance < -1 and key < root.right.key:
+            root.right = self.rightRotate(root.right)
+            return self.leftRotate(root)
 
-        return nodo
+        return root
 
-    def insertar_archivo(self, nombre):
-        self.raiz = self.insertar(self.raiz, nombre)
+    def leftRotate(self, z):
+        y = z.right
+        T2 = y.left
 
-    def inorder(self, nodo):
-        if nodo:
-            self.in_order(nodo.izquierda)
-            print(nodo.nombre)
-            self.in_order(nodo.derecha)
+        y.left = z
+        z.right = T2
+
+        z.height = 1 + max(self.getHeight(z.left), self.getHeight(z.right))
+        y.height = 1 + max(self.getHeight(y.left), self.getHeight(y.right))
+
+        return y
+
+    def rightRotate(self, z):
+        y = z.left
+        T3 = y.right
+
+        y.right = z
+        z.left = T3
+
+        z.height = 1 + max(self.getHeight(z.left), self.getHeight(z.right))
+        y.height = 1 + max(self.getHeight(y.left), self.getHeight(y.right))
+
+        return y
+
+    def getHeight(self, root):
+        if not root:
+            return 0
+        return root.height
+
+    def getBalance(self, root):
+        if not root:
+            return 0
+        return self.getHeight(root.left) - self.getHeight(root.right)
+
+    def preOrder(self, root):
+        if not root:
+            return
+        print("{0} ".format(root.key), end="")
+        self.preOrder(root.left)
+        self.preOrder(root.right)
+
 
 lista_enla = ListaEnlazada()    
 Archivo = UtilizarArchivo()
 Archivo.ExportarArchivo(lista_enla)
-lista_prueba = ([1, 'Juan', 'Perez', 'Ingeniero', 'Desarrollador', 'Proyecto 1', 'Proyecto 2', 'Proyecto 3', 'Proyecto 4', 'Proyecto 5'],)
-arbolavl = ArbolAvl()
 
-arbolavl.insertar_archivo(10)
-arbolavl.insertar_archivo(20)
-arbolavl.insertar_archivo(30)
-arbolavl.insertar_archivo(40)
-arbolavl.insertar_archivo(50)
-arbolavl.insertar_archivo(25)
-
-arbolavl.inorder()
 
 def ModificarCsv():
     with open('Data.csv', mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         for i in lista_enla:
             writer.writerow(i)
-            
+                                                
 ModificarCsv()

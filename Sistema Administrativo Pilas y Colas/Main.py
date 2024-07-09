@@ -14,7 +14,6 @@ class Proyecto:
         self.equipo = equipo
         self.tareas = ListaEnlazada()
         self.porcenta = 0
-        self.p = 0
 
     def agregar_tarea(self, tarea):
         self.tareas.agregar(tarea)
