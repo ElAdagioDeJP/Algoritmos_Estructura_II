@@ -79,13 +79,16 @@ class ListaEnlazada:
     def modificardato(self, indice_buscar, new_valor, indice):
         self.valor_lista = self.obtener(indice_buscar)
         self.valor_lista[indice] = new_valor
-        self.pop(indice_buscar)
+        
         self.insertar(indice_buscar, self.valor_lista)
+        indice_buscar +=1
+        self.pop(indice_buscar)
         
     def modificartodo(self, indice, valor_lista):
         self.valor_lista = valor_lista
-        self.pop(indice)
+        
         self.insertar(indice, self.valor_lista)
+        self.pop(indice)
         
     def index(self, valor):
         actual = self.cabeza
@@ -136,6 +139,8 @@ class UtilizarArchivo:
             for row in reader:
                 cont += 1
         return cont + 1
+    
+       
     
 
         
@@ -225,6 +230,8 @@ class AVLTree:
 lista_enla = ListaEnlazada()    
 Archivo = UtilizarArchivo()
 Archivo.ExportarArchivo(lista_enla)
+Archivo.Imprimir()
+
 
 
 def ModificarCsv():
